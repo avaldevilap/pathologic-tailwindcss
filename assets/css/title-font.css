@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "Kurale";
+  font-weight: normal;
+  src: url("~assets/Kurale-Regular.ttf");
+}
+
+.app-brand {
+  font-family: Kurale, serif;
+}
