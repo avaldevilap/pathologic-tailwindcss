@@ -1,0 +1,24 @@
+mutation CreatePatient($patient: patients_insert_input!) {
+  insert_patients_one(object: $patient) {
+    id
+    address
+    birthdate
+    first_name
+    gender {
+      value
+    }
+    gender_id
+    identifier
+    last_name
+    municipality {
+      code
+      name
+      province_id
+      province {
+        code
+        name
+      }
+    }
+    municipality_id
+  }
+}

@@ -18,6 +18,43 @@ export default {
   plugins: ["@/plugins/vue-formulate.ts"],
   components: true,
   buildModules: ["@nuxt/typescript-build", "@nuxtjs/tailwindcss"],
-  modules: [],
+  modules: ["@nuxtjs/axios", "@nuxtjs/auth-next", "@nuxtjs/apollo"],
+  router: {
+    middleware: ["auth"],
+  },
+  axios: { baseURL: "http://localhost:8000" },
+  auth: {
+    redirect: {
+      logout: "/login",
+    },
+    strategies: {
+      local: {
+        scheme: "refresh",
+        token: {
+          property: "jwt_token",
+        },
+        refreshToken: {
+          property: "jwt_token",
+          maxAge: 900000,
+        },
+        endpoints: {
+          login: { url: "/auth/login", method: "POST" },
+          refresh: { url: "/auth/token/refresh", method: "GET" },
+          logout: false,
+          user: false, // { url: "/api/auth/user", method: "get", propertyName: "user" },
+        },
+        // autoFetchUser: true
+      },
+    },
+  },
+  apollo: {
+    authenticationType: "",
+    tokenName: "auth._token.local",
+    clientConfigs: {
+      default: {
+        httpEndpoint: "http://localhost:8080/v1/graphql",
+      },
+    },
+  },
   build: {},
 };

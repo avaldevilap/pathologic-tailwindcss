@@ -1,0 +1,38 @@
+mutation updateBiopsy(
+  $biopsy_id: uuid!
+  $biopsy: biopsies_set_input
+  $reported_by: [biopsy_practitioner_insert_input!]!
+) {
+  update_biopsies(where: { id: { _eq: $biopsy_id } }, _set: $biopsy) {
+    returning {
+      id
+      number
+      sample
+      patient {
+        id
+        full_name
+      }
+      entry_date
+      macroscopic_date
+      microscopic_date
+      clinical_diagnosis
+      pathological_diagnosis
+      macroscopic_description
+      microscopic_description
+      anatomopathological_report
+      reported_by {
+        practitioner {
+          id
+          identifier
+          full_name
+        }
+      }
+    }
+  }
+  delete_biopsy_practitioner(where: { biopsy_id: { _eq: $biopsy_id } }) {
+    affected_rows
+  }
+  insert_biopsy_practitioner(objects: $reported_by) {
+    affected_rows
+  }
+}

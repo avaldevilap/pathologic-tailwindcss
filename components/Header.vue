@@ -24,6 +24,12 @@
     <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
       <div class="text-sm lg:flex-grow">
         <nuxt-link
+          to="/patients"
+          class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+        >
+          Pacientes
+        </nuxt-link>
+        <nuxt-link
           to="/biopsies"
           class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
         >
@@ -43,5 +49,21 @@
         </a>
       </div>
     </div>
+
+    <template v-if="$auth.loggedIn">
+      <div class="block">
+        <p-button
+          label="Salir"
+          class="bg-teal-600 hover:bg-teal-700"
+          @click="$auth.logout()"
+        />
+      </div>
+    </template>
   </nav>
 </template>
+
+<script lang="ts">
+import Vue from "vue";
+
+export default Vue.extend({});
+</script>

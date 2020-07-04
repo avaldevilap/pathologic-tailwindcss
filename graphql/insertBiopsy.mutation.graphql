@@ -1,0 +1,21 @@
+mutation insertBiopsy($biopsy: biopsies_insert_input!) {
+  insert_biopsies_one(object: $biopsy) {
+    id
+    number
+    sample
+    entry_date
+    macroscopic_date
+    microscopic_date
+    patient {
+      id
+      full_name
+    }
+    reported_by {
+      practitioner {
+        id
+        identifier
+        full_name
+      }
+    }
+  }
+}

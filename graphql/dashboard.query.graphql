@@ -1,0 +1,12 @@
+query dashboard {
+  biopsies_aggregate {
+    aggregate {
+      count
+    }
+  }
+  patients_aggregate {
+    aggregate {
+      count
+    }
+  }
+}

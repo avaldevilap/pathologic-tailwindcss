@@ -1,0 +1,13 @@
+query patients {
+  patients {
+    id
+    identifier
+    first_name
+    last_name
+    birthdate
+    address
+    municipality {
+      name
+    }
+  }
+}

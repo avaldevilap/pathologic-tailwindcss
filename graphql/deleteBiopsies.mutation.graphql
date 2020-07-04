@@ -1,0 +1,5 @@
+mutation deleteBiopsies($ids: [uuid!]!) {
+  delete_biopsies(where: { id: { _in: $ids } }) {
+    affected_rows
+  }
+}

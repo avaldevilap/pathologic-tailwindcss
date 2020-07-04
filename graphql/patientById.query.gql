@@ -1,0 +1,12 @@
+query patientById($id: uuid!) {
+  patients(where: { id: { _eq: $id } }) {
+    id
+    identifier
+    first_name
+    last_name
+    birthdate
+    gender_id
+    address
+    municipality_id
+  }
+}

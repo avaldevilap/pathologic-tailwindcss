@@ -1,0 +1,10 @@
+query Municipalities {
+  municipalities {
+    code
+    name
+    province {
+      code
+      name
+    }
+  }
+}

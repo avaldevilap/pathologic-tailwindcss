@@ -1,0 +1,21 @@
+query biopsies {
+  biopsies(order_by: { number: desc_nulls_last }) {
+    id
+    number
+    sample
+    entry_date
+    macroscopic_date
+    microscopic_date
+    patient {
+      id
+      full_name
+    }
+    reported_by {
+      practitioner {
+        id
+        identifier
+        full_name
+      }
+    }
+  }
+}
