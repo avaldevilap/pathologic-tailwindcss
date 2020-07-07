@@ -19,12 +19,12 @@
               >
                 Pacientes
               </nuxt-link>
-              <a
-                href="#"
+              <nuxt-link
+                to="/biopsies"
                 class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-teal-700 focus:outline-none focus:text-white focus:bg-teal-700"
               >
                 Biopsias
-              </a>
+              </nuxt-link>
               <a
                 href="#"
                 class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-teal-700 focus:outline-none focus:text-white focus:bg-teal-700"
@@ -185,12 +185,12 @@
         >
           Pacientes
         </nuxt-link>
-        <a
-          href="#"
+        <nuxt-link
+          to="/biopsies"
           class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-teal-700 focus:outline-none focus:text-white focus:bg-teal-700"
         >
           Biopsias
-        </a>
+        </nuxt-link>
         <a
           href="#"
           class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-teal-700 focus:outline-none focus:text-white focus:bg-teal-700"
