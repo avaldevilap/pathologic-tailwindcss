@@ -5,6 +5,7 @@
         <div class="flex items-center">
           <div class="flex-shrink-0">
             <nuxt-link
+              active-class="active"
               class="font-semibold text-xl text-white tracking-tight app-brand"
               to="/"
             >
@@ -25,18 +26,18 @@
               >
                 Biopsias
               </nuxt-link>
-              <a
-                href="#"
+              <nuxt-link
+                to="/cytologies"
                 class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-teal-700 focus:outline-none focus:text-white focus:bg-teal-700"
               >
                 Citologías
-              </a>
-              <a
-                href="#"
+              </nuxt-link>
+              <nuxt-link
+                to="/necropsies"
                 class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-teal-700 focus:outline-none focus:text-white focus:bg-teal-700"
               >
                 Necropsias
-              </a>
+              </nuxt-link>
             </div>
           </div>
         </div>
@@ -259,3 +260,9 @@ export default Vue.extend({
   },
 });
 </script>
+
+<style scoped>
+.nuxt-link-active {
+  @apply outline-none text-white bg-teal-700;
+}
+</style>
