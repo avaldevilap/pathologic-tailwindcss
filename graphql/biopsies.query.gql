@@ -8,13 +8,15 @@ query biopsies {
     microscopic_date
     patient {
       id
-      full_name
+      first_name
+      last_name
     }
     reported_by {
       practitioner {
         id
         identifier
-        full_name
+        first_name
+        last_name
       }
     }
   }

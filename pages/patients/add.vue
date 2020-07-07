@@ -33,7 +33,7 @@ export default Vue.extend({
         },
         {
           type: "number",
-          label: "No de identidad",
+          label: "\u2116 de identidad",
           name: "identifier",
           validation: "max:11,length|min:11,length",
         },
