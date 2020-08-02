@@ -1,11 +1,11 @@
-query patientById($id: uuid!) {
+query GetPatientById($id: uuid!) {
   patients(where: { id: { _eq: $id } }) {
     id
     identifier
     first_name
     last_name
     birthdate
-    gender_id
+    gender
     address
     municipality_id
   }

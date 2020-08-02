@@ -14,7 +14,7 @@ export default {
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
-  css: ["@/assets/css/title-font.css"],
+  css: [],
   plugins: ["@/plugins/vue-formulate.ts"],
   components: true,
   buildModules: ["@nuxt/typescript-build", "@nuxtjs/tailwindcss"],

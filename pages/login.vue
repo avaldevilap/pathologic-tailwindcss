@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full max-h-full max-w-xs mx-auto">
+  <div class="w-full max-w-xs mx-auto">
     <h1 class="app-brand text-gray-700 text-center text-5xl">Pathologic</h1>
 
     <FormulateForm
@@ -33,7 +33,13 @@ export default Vue.extend({
           label: "Contraseña",
           validation: "required",
         },
-        { type: "submit", label: "Entrar", "outer-class": ["mx-auto"] },
+        {
+          component: "div",
+          class: "flex justify-end items-center",
+          children: [
+            { type: "submit", label: "Entrar", "outer-class": "mb-0" },
+          ],
+        },
       ],
     };
   },

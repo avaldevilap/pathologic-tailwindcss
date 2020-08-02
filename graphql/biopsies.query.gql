@@ -1,4 +1,4 @@
-query biopsies {
+query GetBiopsies {
   biopsies(order_by: { number: desc_nulls_last }) {
     id
     number

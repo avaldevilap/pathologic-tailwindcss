@@ -1,4 +1,4 @@
-mutation deleteBiopsy($id: uuid!) {
+mutation DeleteBiopsy($id: uuid!) {
   delete_biopsies(where: { id: { _eq: $id } }) {
     affected_rows
   }

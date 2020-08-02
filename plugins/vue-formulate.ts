@@ -44,14 +44,14 @@ Vue.use(VueFormulate, {
         case "group":
           return "";
         case "box":
-          return "sr-only";
+          return "sr-only mr-2 leading-tight";
 
         default:
           return "border border-gray-400 rounded px-3 py-2 leading-none focus:border-teal-500 outline-none border-box w-full mb-1";
       }
     },
     decorator: ({ hasValue }: VueFormulateContext) => {
-      let base = "border rounded inline-block w-4 h-4 mr-2";
+      let base = "decorator border rounded inline-block w-4 h-4 mr-2";
       if (hasValue) {
         base += " bg-teal-600";
       }

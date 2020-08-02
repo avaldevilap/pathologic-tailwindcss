@@ -1,4 +1,4 @@
-query patients {
+query GetPatients {
   patients {
     id
     identifier

@@ -1,4 +1,4 @@
-mutation insertBiopsy($biopsy: biopsies_insert_input!) {
+mutation InsertBiopsy($biopsy: biopsies_insert_input!) {
   insert_biopsies_one(object: $biopsy) {
     id
     number
@@ -8,13 +8,15 @@ mutation insertBiopsy($biopsy: biopsies_insert_input!) {
     microscopic_date
     patient {
       id
-      full_name
+      first_name
+      last_name
     }
     reported_by {
       practitioner {
         id
         identifier
-        full_name
+        first_name
+        last_name
       }
     }
   }

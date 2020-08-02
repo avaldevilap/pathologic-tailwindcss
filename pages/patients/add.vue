@@ -36,6 +36,7 @@ export default Vue.extend({
           label: "\u2116 de identidad",
           name: "identifier",
           validation: "max:11,length|min:11,length",
+          validationName: "\u2116 de identidad",
         },
         {
           component: "div",
@@ -55,11 +56,16 @@ export default Vue.extend({
             },
           ],
         },
-        { type: "date", label: "Fecha de nacimiento", name: "birthdate" },
+        {
+          type: "date",
+          label: "Fecha de nacimiento",
+          name: "birthdate",
+          "input-class": ["text-gray-600"],
+        },
         {
           type: "radio",
           label: "Sexo",
-          name: "gender_id",
+          name: "gender",
           options: {
             male: "Masculino",
             female: "Femenino",
@@ -72,20 +78,13 @@ export default Vue.extend({
           label: "Municipio",
           name: "municipality_id",
           // @ts-ignore
-          options: this.mOptions,
+          options: this.municipalities.map((m: any) => ({
+            value: m.code,
+            label: `${m.name}, ${m.province.name}`,
+          })),
         },
         { type: "submit", label: "Añadir", "outer-class": ["float-right"] },
       ];
-    },
-    mOptions(): {} {
-      if (this.$apollo.loading) {
-        return {};
-      }
-
-      return this.municipalities.map((m: any) => ({
-        value: m.code,
-        label: `${m.name}, ${m.province.name}`,
-      }));
     },
   },
   apollo: {

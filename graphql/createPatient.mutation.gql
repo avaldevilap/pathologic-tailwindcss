@@ -4,10 +4,7 @@ mutation CreatePatient($patient: patients_insert_input!) {
     address
     birthdate
     first_name
-    gender {
-      value
-    }
-    gender_id
+    gender
     identifier
     last_name
     municipality {

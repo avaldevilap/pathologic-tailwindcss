@@ -1,14 +1,11 @@
-mutation updatePatient($id: uuid!, $patient: patients_set_input) {
+mutation UpdatePatient($id: uuid!, $patient: patients_set_input) {
   update_patients(where: { id: { _eq: $id } }, _set: $patient) {
     returning {
       id
       address
       birthdate
       first_name
-      gender {
-        value
-      }
-      gender_id
+      gender
       identifier
       last_name
       municipality {

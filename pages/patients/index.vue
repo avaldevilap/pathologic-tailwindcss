@@ -1,10 +1,18 @@
 <template>
-  <div class="flex flex-col">
+  <div>
+    <h1 class="title">Pacientes</h1>
+
+    <Table :items="patients" :headers="headers" add-url-name="patients-add" />
+  </div>
+  <!-- <div class="flex flex-col">
     <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
       <div class="flex flex-row mb-3">
-        <p-button class="ml-auto" :to="{ name: 'patients-add' }">
+        <nuxt-link
+          class="ml-auto btn btn-primary"
+          :to="{ name: 'patients-add' }"
+        >
           Añadir
-        </p-button>
+        </nuxt-link>
       </div>
 
       <div
@@ -89,7 +97,7 @@
         </table>
       </div>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script lang="ts">
@@ -100,15 +108,22 @@ export default Vue.extend({
   data() {
     return {
       patients: [],
+      headers: [
+        { text: "Nombre", value: "first_name" },
+        { text: "\u2116 de identidad", value: "identifier" },
+        { text: "Fecha de nacimiento", value: "birthdate" },
+        { text: "Dirección", value: "address" },
+        { text: "Municipio", value: "municipality.name" },
+      ],
     };
-  },
-  head: {
-    title: "Pacientes",
   },
   apollo: {
     patients: {
       query: patientsQuery,
     },
+  },
+  head: {
+    title: "Pacientes",
   },
 });
 </script>

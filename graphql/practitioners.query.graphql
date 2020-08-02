@@ -1,6 +1,0 @@
-query practitioners {
-  practitioners {
-    id
-    full_name
-  }
-}

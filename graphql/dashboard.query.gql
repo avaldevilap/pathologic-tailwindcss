@@ -1,4 +1,4 @@
-query dashboard {
+query Dashboard {
   biopsies_aggregate {
     aggregate {
       count

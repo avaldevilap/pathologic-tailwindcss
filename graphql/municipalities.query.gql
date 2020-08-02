@@ -1,4 +1,4 @@
-query Municipalities {
+query GetMunicipalities {
   municipalities {
     code
     name

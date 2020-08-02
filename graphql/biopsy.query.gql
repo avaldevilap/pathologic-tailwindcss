@@ -1,11 +1,12 @@
-query biopsy($id: uuid!) {
+query GetBiopsy($id: uuid!) {
   biopsy: biopsies_by_pk(id: $id) {
     id
     number
     sample
     patient {
       id
-      full_name
+      first_name
+      last_name
     }
     entry_date
     macroscopic_date
@@ -20,7 +21,7 @@ query biopsy($id: uuid!) {
       practitioner {
         id
         identifier
-        full_name
+        first_name
       }
     }
   }
