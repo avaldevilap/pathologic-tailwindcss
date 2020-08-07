@@ -1,5 +1,9 @@
-query GetBiopsies {
-  biopsies(order_by: { number: desc_nulls_last }) {
+query GetBiopsies($limit: Int, $offset: Int) {
+  biopsies(
+    limit: $limit
+    offset: $offset
+    order_by: { number: desc_nulls_last }
+  ) {
     id
     number
     sample
@@ -8,16 +12,7 @@ query GetBiopsies {
     microscopic_date
     patient {
       id
-      first_name
-      last_name
-    }
-    reported_by {
-      practitioner {
-        id
-        identifier
-        first_name
-        last_name
-      }
+      full_name
     }
   }
 }

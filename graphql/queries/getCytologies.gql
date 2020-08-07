@@ -1,0 +1,12 @@
+query GetCytologies($limit: Int, $offset: Int) {
+  cytologies(limit: $limit, offset: $offset) {
+    id
+    number
+    sample
+    entry_date
+    patient {
+      id
+      full_name
+    }
+  }
+}

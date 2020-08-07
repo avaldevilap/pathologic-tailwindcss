@@ -7,7 +7,7 @@
     "esModuleInterop": true,
     "allowJs": true,
     "sourceMap": true,
-    "strict": true,
+    "strict": false,
     "noEmit": true,
     "experimentalDecorators": true,
     "baseUrl": ".",
@@ -18,7 +18,7 @@
     "types": [
       "@types/node",
       "@nuxt/types",
-      "@nuxtjs/auth",
+      "@nuxtjs/auth-next",
       "@nuxtjs/axios",
       "vue-apollo/types"
     ]

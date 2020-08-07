@@ -24,6 +24,12 @@ export default {
   },
   axios: { baseURL: "http://localhost:8000" },
   auth: {
+    localStorage: false,
+    cookie: {
+      options: {
+        secure: false,
+      },
+    },
     redirect: {
       logout: "/login",
     },
@@ -32,18 +38,19 @@ export default {
         scheme: "refresh",
         token: {
           property: "jwt_token",
+          maxAge: 900,
         },
         refreshToken: {
           property: "jwt_token",
-          maxAge: 900000,
+          maxAge: 43200,
         },
         endpoints: {
           login: { url: "/auth/login", method: "POST" },
           refresh: { url: "/auth/token/refresh", method: "GET" },
-          logout: false,
+          logout: { url: "/auth/logout", method: "POST" },
           user: false, // { url: "/api/auth/user", method: "get", propertyName: "user" },
         },
-        // autoFetchUser: true
+        autoLogout: true,
       },
     },
   },

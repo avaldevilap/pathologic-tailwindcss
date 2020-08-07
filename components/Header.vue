@@ -15,7 +15,7 @@
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline">
               <nuxt-link
-                to="/patients"
+                :to="{ name: 'patients', query: { page: 1 } }"
                 class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-teal-700 focus:outline-none focus:text-white focus:bg-teal-700"
               >
                 Pacientes

@@ -1,9 +1,13 @@
-query GetPatients {
-  patients {
+query GetPatients($limit: Int, $offset: Int) {
+  patients_aggregate {
+    aggregate {
+      count
+    }
+  }
+  patients(limit: $limit, offset: $offset, order_by: { created_at: desc }) {
     id
     identifier
-    first_name
-    last_name
+    full_name
     birthdate
     address
     municipality {

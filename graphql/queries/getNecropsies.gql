@@ -1,0 +1,11 @@
+query GetNecropsies {
+  necropsies(order_by: { number: desc_nulls_last }) {
+    id
+    number
+    date_of_admission
+    patient {
+      id
+      full_name
+    }
+  }
+}

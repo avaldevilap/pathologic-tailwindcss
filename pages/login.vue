@@ -45,8 +45,11 @@ export default Vue.extend({
   },
   methods: {
     async login() {
-      // @ts-ignore
-      await this.$auth.loginWith("local", { data: this.credentials });
+      try {
+        await this.$auth.loginWith("local", { data: this.credentials });
+      } catch (err) {
+        console.log(err);
+      }
     },
   },
 });

@@ -2,16 +2,20 @@
   <div>
     <h1 class="title">Citologías</h1>
 
-    <Table :items="items" :headers="headers" />
+    <Table :items="items" :headers="headers" add-url-name="cytologies-add" @on-prev="prev" @on-next="next" />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
+import getCytologies from "@/graphql/queries/getCytologies.gql";
+
+const pageSize = 6;
 
 export default Vue.extend({
   data() {
     return {
+      page: 0,
       headers: [
         { text: "\u2116", value: "number" },
         { text: "Muestra", value: "sample" },
@@ -30,6 +34,43 @@ export default Vue.extend({
         },
       ],
     };
+  },
+  apollo: {
+    cytologies: {
+      query: getCytologies,
+      variables() {
+        return {
+          limit: pageSize,
+          offset: this.page * pageSize,
+        };
+      },
+    },
+  },
+  methods: {
+    prev(): void {
+      this.page--;
+      this.$apollo.queries.cytologies.fetchMore({
+        variables: {
+          limit: pageSize,
+          offset: this.page,
+        },
+        updateQuery: (previousResult: any, { fetchMoreResult }: any) => {
+          return [...previousResult.cytologies, ...fetchMoreResult.cytologies];
+        },
+      });
+    },
+    next(): void {
+      this.page++;
+      this.$apollo.queries.cytologies.fetchMore({
+        variables: {
+          limit: pageSize,
+          offset: this.page,
+        },
+        updateQuery: (previousResult: any, { fetchMoreResult }: any) => {
+          return [...previousResult.cytologies, ...fetchMoreResult.cytologies];
+        },
+      });
+    },
   },
   head: {
     title: "Citologías",
