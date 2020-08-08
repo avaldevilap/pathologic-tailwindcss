@@ -21,19 +21,19 @@
                 Pacientes
               </nuxt-link>
               <nuxt-link
-                to="/biopsies"
+                :to="{ name: 'biopsies', query: { page: 1 } }"
                 class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-teal-700 focus:outline-none focus:text-white focus:bg-teal-700"
               >
                 Biopsias
               </nuxt-link>
               <nuxt-link
-                to="/cytologies"
+                :to="{ name: 'cytologies', query: { page: 1 } }"
                 class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-teal-700 focus:outline-none focus:text-white focus:bg-teal-700"
               >
                 Citologías
               </nuxt-link>
               <nuxt-link
-                to="/necropsies"
+                :to="{ name: 'necropsies', query: { page: 1 } }"
                 class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-teal-700 focus:outline-none focus:text-white focus:bg-teal-700"
               >
                 Necropsias
@@ -181,25 +181,25 @@
     <div :class="[!mobileMenu ? 'hidden' : 'block', 'md:hidden']">
       <div class="px-2 pt-2 pb-3 sm:px-3">
         <nuxt-link
-          to="/patients"
+          :to="{ name: 'patients', query: { page: 1 } }"
           class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-teal-700 focus:outline-none focus:text-white focus:bg-teal-700"
         >
           Pacientes
         </nuxt-link>
         <nuxt-link
-          to="/biopsies"
+          :to="{ name: 'biopsies', query: { page: 1 } }"
           class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-teal-700 focus:outline-none focus:text-white focus:bg-teal-700"
         >
           Biopsias
         </nuxt-link>
         <a
-          href="#"
+          :to="{ name: 'cytologies', query: { page: 1 } }"
           class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-teal-700 focus:outline-none focus:text-white focus:bg-teal-700"
         >
           Citologías
         </a>
         <a
-          href="#"
+          :to="{ name: 'necropsies', query: { page: 1 } }"
           class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-teal-700 focus:outline-none focus:text-white focus:bg-teal-700"
         >
           Necropsias

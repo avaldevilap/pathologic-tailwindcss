@@ -3,6 +3,7 @@
     <h1 class="title">Pacientes</h1>
 
     <Table
+      :items-count="count"
       :items="patients"
       :headers="headers"
       url-name="patients"

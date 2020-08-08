@@ -64,12 +64,15 @@
       <div class="flex justify-center items-center my-2">
         <button
           :class="{ 'btn-disabled': prevDisabled }"
-          class="btn btn-secondary mr-5"
+          class="btn btn-secondary"
           :disabled="prevDisabled"
           @click="onPrev"
         >
           Anterior
         </button>
+
+        <span class="mx-5">{{ page }} de {{ itemsCount }}</span>
+
         <button
           :class="{ 'btn-disabled': nextDisabled }"
           class="btn btn-secondary"
@@ -110,9 +113,19 @@ export default Vue.extend({
       type: [Boolean, Number],
       default: false,
     },
+    itemsCount: {
+      type: Number,
+      default: 0,
+    },
     loading: {
       type: Boolean,
       default: false,
+    },
+  },
+  computed: {
+    page(): string {
+      const page = parseInt(this.$route.query.page, 10);
+      return `${page * 6 - 5} - ${page * 6}`;
     },
   },
   methods: {

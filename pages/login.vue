@@ -52,5 +52,10 @@ export default Vue.extend({
       }
     },
   },
+  head() {
+    return {
+      title: "Pathologic",
+    };
+  },
 });
 </script>
