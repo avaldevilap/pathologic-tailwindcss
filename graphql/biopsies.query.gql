@@ -1,9 +1,10 @@
 query GetBiopsies($limit: Int, $offset: Int) {
-  biopsies(
-    limit: $limit
-    offset: $offset
-    order_by: { number: desc_nulls_last }
-  ) {
+  biopsies_aggregate {
+    aggregate {
+      count
+    }
+  }
+  biopsies(limit: $limit, offset: $offset, order_by: {number: desc_nulls_last}) {
     id
     number
     sample
@@ -16,3 +17,4 @@ query GetBiopsies($limit: Int, $offset: Int) {
     }
   }
 }
+

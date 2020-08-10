@@ -2,15 +2,7 @@
   <div>
     <h1 class="title">Pacientes</h1>
 
-    <Table
-      :items-count="count"
-      :items="patients"
-      :headers="headers"
-      url-name="patients"
-      :prev-disabled="offset === 0"
-      :next-disabled="offset + 6 >= count"
-      @on-change="pagination"
-    />
+    <Table :items-count="count" :items="patients" :headers="headers" url-name="patients" />
   </div>
 </template>
 
@@ -30,8 +22,8 @@ export default Vue.extend({
         { text: "\u2116 de identidad", value: "identifier" },
         { text: "Fecha de nacimiento", value: "birthdate" },
         { text: "Dirección", value: "address" },
-        { text: "Municipio", value: "municipality.name" },
-      ],
+        { text: "Municipio", value: "municipality.name" }
+      ]
     };
   },
   computed: {
@@ -46,7 +38,7 @@ export default Vue.extend({
       const offset = 6 * this.pages - limit;
       if (offset >= 0) return offset;
       return 0;
-    },
+    }
   },
   apollo: {
     patients: {
@@ -54,26 +46,26 @@ export default Vue.extend({
       variables() {
         return {
           limit,
-          offset: this.offset,
+          offset: this.offset
         };
       },
       update(data) {
         this.count = data.patients_aggregate.aggregate.count;
         return data.patients;
-      },
-    },
+      }
+    }
   },
   methods: {
     pagination(): () => {} {
       return () =>
         this.$apollo.queries.patients.setVariables({
           limit,
-          offset: this.offset,
+          offset: this.offset
         });
-    },
+    }
   },
   head() {
     return { title: "Pacientes" };
-  },
+  }
 });
 </script>

@@ -2,7 +2,7 @@
   <div>
     <h1 class="title">Citologías</h1>
 
-    <Table :items="items" :headers="headers" add-url-name="cytologies-add" @on-prev="prev" @on-next="next" />
+    <Table :items-count="count" :items="cytologies" :headers="headers" url-name="cytologies" />
   </div>
 </template>
 
@@ -10,12 +10,12 @@
 import Vue from "vue";
 import getCytologies from "@/graphql/queries/getCytologies.gql";
 
-const pageSize = 6;
+const limit = 6;
 
 export default Vue.extend({
   data() {
     return {
-      page: 0,
+      count: 0,
       headers: [
         { text: "\u2116", value: "number" },
         { text: "Muestra", value: "sample" },
@@ -35,15 +35,25 @@ export default Vue.extend({
       ],
     };
   },
+  computed: {
+    offset() {
+      const page = parseInt(this.$route.query.page, 10);
+      return page ? (page - 1) * limit : 0;
+    },
+  },
   apollo: {
     cytologies: {
       query: getCytologies,
       variables() {
         return {
-          limit: pageSize,
-          offset: this.page * pageSize,
+          limit,
+          offset: this.offset
         };
       },
+      update(data) {
+        this.count = data.cytologies_aggregate.aggregate.count;
+        return data.cytologies;
+      }
     },
   },
   methods: {

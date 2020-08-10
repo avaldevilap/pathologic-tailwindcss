@@ -9,10 +9,10 @@ export default {
       {
         hid: "description",
         name: "description",
-        content: process.env.npm_package_description || "",
-      },
+        content: process.env.npm_package_description || ""
+      }
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
   css: [],
   plugins: ["@/plugins/vue-formulate.ts"],
@@ -20,7 +20,7 @@ export default {
   buildModules: ["@nuxt/typescript-build", "@nuxtjs/tailwindcss"],
   modules: ["@nuxtjs/axios", "@nuxtjs/auth-next", "@nuxtjs/apollo"],
   router: {
-    middleware: ["auth"],
+    middleware: ["auth"]
   },
   axios: { baseURL: "http://localhost:8000" },
   auth: {
@@ -28,40 +28,42 @@ export default {
     cookie: {
       options: {
         secure: false,
-      },
+        expires: 7
+      }
     },
     redirect: {
-      logout: "/login",
+      logout: "/login"
     },
     strategies: {
       local: {
         scheme: "refresh",
         token: {
           property: "jwt_token",
-          maxAge: 900,
+          maxAge: 900
         },
         refreshToken: {
           property: "jwt_token",
-          maxAge: 43200,
+          data: false,
+          maxAge: 43200
         },
         endpoints: {
           login: { url: "/auth/login", method: "POST" },
           refresh: { url: "/auth/token/refresh", method: "GET" },
           logout: { url: "/auth/logout", method: "POST" },
-          user: false, // { url: "/api/auth/user", method: "get", propertyName: "user" },
+          user: false // { url: "/api/auth/user", method: "get", propertyName: "user" },
         },
-        autoLogout: true,
-      },
-    },
+        autoLogout: true
+      }
+    }
   },
   apollo: {
     authenticationType: "",
-    tokenName: "auth._token.local",
     clientConfigs: {
       default: {
-        httpEndpoint: "http://localhost:8080/v1/graphql",
-      },
-    },
+        tokenName: "auth._token.local",
+        httpEndpoint: "http://localhost:8080/v1/graphql"
+      }
+    }
   },
-  build: {},
+  build: {}
 };

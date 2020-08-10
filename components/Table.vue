@@ -5,15 +5,11 @@
       :to="{ name: `${urlName}-add` }"
     >
       <svg class="fill-current w-4 h-4" viewBox="0 0 20 20">
-        <path
-          d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-        />
+        <path d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
       </svg>
       <span class="ml-1">Añadir</span>
     </nuxt-link>
-    <div
-      class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200"
-    >
+    <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
       <table class="min-w-full">
         <thead>
           <tr>
@@ -36,24 +32,15 @@
         </thead>
         <tbody class="bg-white">
           <tr v-for="(item, index) in items" :key="item.id">
-            <td
-              v-for="h in headers"
-              :key="h.value"
-              class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"
-            >
+            <td v-for="h in headers" :key="h.value" class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
               <div class="flex items-center">
                 <div class="text-sm leading-5 font-medium text-gray-900">
                   {{ map(items, property(h.value))[index] }}
                 </div>
               </div>
             </td>
-            <td
-              class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium"
-            >
-              <nuxt-link
-                :to="`/${urlName}/${item.id}/edit`"
-                class="text-teal-600 hover:text-teal-900"
-              >
+            <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
+              <nuxt-link :to="`/${urlName}/${item.id}/edit`" class="text-teal-600 hover:text-teal-900">
                 Editar
               </nuxt-link>
             </td>
@@ -61,27 +48,13 @@
         </tbody>
       </table>
 
-      <div class="flex justify-center items-center my-2">
-        <button
-          :class="{ 'btn-disabled': prevDisabled }"
-          class="btn btn-secondary"
-          :disabled="prevDisabled"
-          @click="onPrev"
-        >
-          Anterior
-        </button>
-
-        <span class="mx-5">{{ page }} de {{ itemsCount }}</span>
-
-        <button
-          :class="{ 'btn-disabled': nextDisabled }"
-          class="btn btn-secondary"
-          :disabled="nextDisabled"
-          @click="onNext"
-        >
-          Siguiente
-        </button>
-      </div>
+      <pagination
+        :total-pages="Math.ceil(itemsCount / 6)"
+        :total="itemsCount"
+        :per-page="6"
+        :current-page="parseInt($route.query.page, 10)"
+        @pagechanged="onPageChange"
+      />
     </div>
   </div>
 </template>
@@ -91,46 +64,54 @@ import Vue from "vue";
 import map from "lodash/map";
 import property from "lodash/property";
 
+const limit = 6;
+
 export default Vue.extend({
   props: {
     headers: {
       type: Array,
-      default: () => [],
+      default: () => []
     },
     items: {
       type: Array,
-      default: () => [],
+      default: () => []
     },
     urlName: {
       type: String,
-      required: true,
+      required: true
     },
     prevDisabled: {
       type: [Boolean, Number],
-      default: false,
+      default: false
     },
     nextDisabled: {
       type: [Boolean, Number],
-      default: false,
+      default: false
     },
     itemsCount: {
       type: Number,
-      default: 0,
+      default: 0
     },
     loading: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   computed: {
     page(): string {
       const page = parseInt(this.$route.query.page, 10);
-      return `${page * 6 - 5} - ${page * 6}`;
-    },
+      if (this.items.length < limit) {
+        return `${page * limit} - ${page * limit - this.items.length}`;
+      }
+      return `${page * limit} - ${page * limit + limit}`;
+    }
   },
   methods: {
     map,
     property,
+    onPageChange(page: number) {
+      this.$router.push({ query: { page } });
+    },
     onPrev(): void {
       const page = parseInt(this.$route.query.page, 10);
       this.$router.push({ query: { page: page - 1 } });
@@ -140,7 +121,7 @@ export default Vue.extend({
       const page = parseInt(this.$route.query.page, 10);
       this.$router.push({ query: { page: page + 1 } });
       this.$emit("on-change");
-    },
-  },
+    }
+  }
 });
 </script>

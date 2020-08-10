@@ -1,4 +1,9 @@
 query GetCytologies($limit: Int, $offset: Int) {
+  cytologies_aggregate {
+    aggregate {
+      count
+    }
+  }
   cytologies(limit: $limit, offset: $offset) {
     id
     number
@@ -10,3 +15,4 @@ query GetCytologies($limit: Int, $offset: Int) {
     }
   }
 }
+

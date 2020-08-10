@@ -1,0 +1,26 @@
+query GetBiopsy($id: uuid!) {
+  biopsy: biopsies_by_pk(id: $id) {
+    id
+    number
+    sample
+    patient {
+      id
+      full_name
+    }
+    entry_date
+    macroscopic_date
+    microscopic_date
+    clinical_diagnosis
+    pathological_diagnosis
+    macroscopic_description
+    microscopic_description
+    anatomopathological_report
+    reported_by {
+      practitioner {
+        id
+        identifier
+        full_name
+      }
+    }
+  }
+}
