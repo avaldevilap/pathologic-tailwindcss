@@ -3,6 +3,9 @@ import Vue from "vue";
 import VueFormulate from "@braid/vue-formulate";
 // @ts-ignore
 import { es } from "@braid/vue-formulate-i18n";
+import Autocomplete from "@/components/base/Autocomplete.vue";
+
+Vue.component("FormulateAutocomplete", Autocomplete);
 
 interface VueFormulateContext {
   hasValue: boolean;
@@ -76,6 +79,12 @@ Vue.use(VueFormulate, {
       }
     },
     help: "text-xs mb-1 text-gray-600",
-    error: "text-red-700 text-xs mb-1",
+    error: "text-red-700 text-xs mb-1"
   },
+  library: {
+    autocomplete: {
+      classification: "text",
+      component: "FormulateAutocomplete"
+    }
+  }
 });

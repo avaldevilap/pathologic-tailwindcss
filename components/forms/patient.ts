@@ -3,7 +3,7 @@ export default (title: string, options: {}) => {
     {
       component: "h3",
       class: "title",
-      children: title,
+      children: title
     },
     {
       component: "div",
@@ -13,7 +13,7 @@ export default (title: string, options: {}) => {
           type: "number",
           label: "No de identidad",
           name: "identifier",
-          validation: "max:11,length|min:11,length",
+          validation: "max:11,length|min:11,length"
         },
         {
           component: "div",
@@ -23,15 +23,15 @@ export default (title: string, options: {}) => {
               type: "text",
               label: "Nombre",
               name: "first_name",
-              "outer-class": ["w-1/2 mr-1"],
+              "outer-class": ["w-1/2 mr-1"]
             },
             {
               type: "text",
               label: "Apellidos",
               name: "last_name",
-              "outer-class": ["w-1/2 ml-1"],
-            },
-          ],
+              "outer-class": ["w-1/2 ml-1"]
+            }
+          ]
         },
         { type: "date", label: "Fecha de nacimiento", name: "birthdate" },
         {
@@ -40,23 +40,25 @@ export default (title: string, options: {}) => {
           name: "gender",
           options: {
             male: "Masculino",
-            female: "Femenino",
-          },
+            female: "Femenino"
+          }
         },
         { type: "textarea", label: "Dirección", name: "address" },
         {
           type: "select",
           label: "Municipio",
           name: "municipality_id",
-          options,
+          options
         },
         {
           component: "div",
           class: "flex justify-end mt-8",
-          children: [{ type: "submit", label: "Guardar" }],
-        },
-      ],
-    },
+          children: [
+            { type: "button", label: "Cancelar", "input-class": "btn btn-link mr-2" },
+            { type: "submit", label: "Guardar" }
+          ]
+        }
+      ]
+    }
   ];
 };
-

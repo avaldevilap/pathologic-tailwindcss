@@ -44,13 +44,24 @@ export default {
         refreshToken: {
           property: "jwt_token",
           data: false,
-          maxAge: 43200
+          //maxAge: 43200
+          maxAge: 900
         },
         endpoints: {
           login: { url: "/auth/login", method: "POST" },
           refresh: { url: "/auth/token/refresh", method: "GET" },
           logout: { url: "/auth/logout", method: "POST" },
-          user: false // { url: "/api/auth/user", method: "get", propertyName: "user" },
+          user: false
+          // user: {
+          //   url: "http://localhost:8080/v1/graphql",
+          //   method: "POST",
+          //   data: JSON.stringify({
+          //     query:
+          //       'query Q1{\n  me: users_by_pk(id: "d837528c-6cac-40c5-86c8-fa3e50c28b1f") {\n id\n display_name\n avatar_url\n }\n}\n',
+          //     variables: {}
+          //   }),
+          //   propertyName: false
+          // }
         },
         autoLogout: true
       }

@@ -9,6 +9,7 @@
 <script lang="ts">
 import Vue from "vue";
 import findIndex from "lodash/findIndex";
+import gql from "graphql-tag";
 import biopsySchema from "@/components/forms/biopsy";
 import biopsyById from "@/graphql/queries/getBiopsyById.gql";
 

@@ -39,3 +39,9 @@ body {
 .title {
   @apply text-gray-900 font-bold text-xl mb-5;
 }
+.btn-link {
+  @apply text-teal-500;
+}
+.btn-link:hover {
+  @apply text-teal-700;
+}

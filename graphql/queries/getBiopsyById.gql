@@ -4,8 +4,8 @@ query GetBiopsy($id: uuid!) {
     number
     sample
     patient {
-      id
-      full_name
+      value: id
+      label: full_name
     }
     entry_date
     macroscopic_date

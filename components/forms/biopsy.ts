@@ -11,7 +11,7 @@ export default (title: string, options?: {}) => {
       children: [
         { type: "text", name: "number", label: "\u2116 de biopsia" },
         { type: "text", name: "sample", label: "Muestra" },
-        { type: "select", name: "patient_id", label: "Paciente", options },
+        { type: "autocomplete", name: "patient", label: "Paciente", options },
         {
           type: "date",
           name: "entry_date",
